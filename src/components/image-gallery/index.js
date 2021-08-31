@@ -4,6 +4,10 @@ import { useEffect, useRef, useState } from 'react';
 import { Container, Slider, SliderItem, ImageDiv, Button } from './ImageGalleryElements';
 import useInterval from '../hooks/useInterval';
 
+// @images        array [{src: '', alt: ''}]
+// autoplay       bool
+// @slideInterval number in ms
+// @slideDuration number in ms
 const ImageGallery = ({ images, autoPlay, slideInterval, slideDuration, prevIcon, nextIcon }) => {
   const containerRef = useRef();
   const slideWidth = containerRef.current ? containerRef.current.offsetWidth : 0;
@@ -21,7 +25,7 @@ const ImageGallery = ({ images, autoPlay, slideInterval, slideDuration, prevIcon
 
   const prevSlide = () => setSlideIndex(Math.max(slideIndex - 1, 0));
 
-  if (autoPlay) useInterval(nextSlide, slideInterval);
+  if (autoPlay) useInterval(nextSlide, slideInterval, [slideIndex]);
 
   const handleSliderTransitionEnd = () => {
     const setIndex = newIndex => {
@@ -61,7 +65,7 @@ ImageGallery.propTypes = {
   images: PropTypes.array.isRequired,
   autoPlay: PropTypes.bool.isRequired,
   slideInterval: PropTypes.number.isRequired,
-  slideDuration: PropTypes.string.isRequired,
+  slideDuration: PropTypes.number.isRequired,
   prevIcon: PropTypes.any.isRequired,
   nextIcon: PropTypes.any.isRequired,
 };

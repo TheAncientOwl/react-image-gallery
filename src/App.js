@@ -44,8 +44,8 @@ const App = () => {
       <ImageGallery
         images={Images}
         autoPlay={true}
-        slideInterval={2500}
-        slideDuration='700ms'
+        slideInterval={3000}
+        slideDuration={1500}
         prevIcon={<LeftArrow />}
         nextIcon={<RightArrow />}
       />
