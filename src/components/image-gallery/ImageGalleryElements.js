@@ -18,7 +18,7 @@ export const Slider = styled.div(
 
     will-change: transform;
     transform: translateX(${`-${offsetPx}px`});
-    transition: transform ease ${transitionDuration};
+    transition: transform ease ${transitionDuration}ms;
   `
 );
 
