@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import { Container, Slider, SliderItem, ImageDiv, Button } from './ImageGalleryElements';
 import useInterval from '../hooks/useInterval';
+import Thumbnail from './thumbnail';
 
 // @images        array [{src: '', alt: ''}]
 // autoplay       bool
@@ -39,25 +40,35 @@ const ImageGallery = ({ images, autoPlay, slideInterval, slideDuration, prevIcon
   };
 
   return (
-    <Container className='sliderWidth' ref={containerRef}>
-      <Button left onClick={prevSlide}>
-        {prevIcon}
-      </Button>
+    <>
+      <Container className='sliderWidth' ref={containerRef}>
+        <Button left onClick={prevSlide}>
+          {prevIcon}
+        </Button>
 
-      <Slider
-        onTransitionEnd={handleSliderTransitionEnd}
-        widthPx={slideWidth * slides.length}
-        offsetPx={slideIndex * slideWidth}
-        transitionDuration={slideDurationRef.current}>
-        {slides.map((item, index) => (
-          <SliderItem key={index}>
-            <ImageDiv src={item.src} alt={item.alt} />
-          </SliderItem>
-        ))}
-      </Slider>
+        <Slider
+          onTransitionEnd={handleSliderTransitionEnd}
+          widthPx={slideWidth * slides.length}
+          offsetPx={slideIndex * slideWidth}
+          transitionDuration={slideDurationRef.current}>
+          {slides.map((item, index) => (
+            <SliderItem key={index}>
+              <ImageDiv src={item.src} alt={item.alt} />
+            </SliderItem>
+          ))}
+        </Slider>
 
-      <Button onClick={nextSlide}>{nextIcon}</Button>
-    </Container>
+        <Button onClick={nextSlide}>{nextIcon}</Button>
+      </Container>
+
+      <Thumbnail
+        images={images}
+        currentIndex={slideIndex}
+        transitionDuration={slideDuration}
+        imageWidth={50}
+        imageHeight={100}
+      />
+    </>
   );
 };
 
