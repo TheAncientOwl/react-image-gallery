@@ -14,10 +14,10 @@ export const Slider = styled.div(
     display: flex;
 
     height: 100%;
-    width: ${`${widthPx}px`};
+    width: ${widthPx}px;
 
     will-change: transform;
-    transform: translateX(${`-${offsetPx}px`});
+    transform: translateX(-${offsetPx}px);
     transition: transform ease ${transitionDuration}ms;
   `
 );
