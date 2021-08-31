@@ -1,5 +1,7 @@
 import styled from 'styled-components';
+
 const Container = styled.div`
+  position: relative;
   width: 80vw;
   height: 80vh;
 
@@ -39,7 +41,14 @@ const RightArrow = styled(FaArrowAltCircleRight)`
 const App = () => {
   return (
     <Container>
-      <ImageGallery images={Images} slideDuration='700ms' prevIcon={<LeftArrow />} nextIcon={<RightArrow />} />
+      <ImageGallery
+        images={Images}
+        autoPlay={true}
+        slideInterval={2500}
+        slideDuration='700ms'
+        prevIcon={<LeftArrow />}
+        nextIcon={<RightArrow />}
+      />
     </Container>
   );
 };
