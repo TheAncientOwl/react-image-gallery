@@ -39,7 +39,7 @@ export const ImageDiv = styled.img`
 export const Button = styled.div(
   ({ left }) => css`
     position: absolute;
-    z-index: 20;
+    z-index: 50;
     left: ${left ? '0.5em' : ''};
     right: ${left ? '' : '0.5em'};
     top: 50%;
